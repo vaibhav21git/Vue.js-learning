@@ -1,13 +1,11 @@
 <template>
   <div>
-    <h2 v-for="(name, index) in names" v-bind:key="name">
-      {{ index }} {{ name }}
-    </h2>
-    <h2 v-for="(names, index) in fullNames" :key="index">
-      {{ index }} {{ names.first }} {{ names.last }}
-    </h2>
-    <h2 v-for="names in fullNames" :key="names">
-      {{ names.first }} {{ names.last }}
+    <div v-for="actor in actors" :key="actor.name">
+      <h2>{{ actor.name }}</h2>
+      <h3 v-for="movie in actor.movies" :key="movie">{{ movie }}</h3>
+    </div>
+    <h2 v-for="(value, key, index) in myInfo" :key="value">
+      {{ index }} {{ key }} {{ value }}
     </h2>
   </div>
 </template>
@@ -18,20 +16,25 @@ export default {
   data() {
     return {
       names: ["vaibhav", "madhu", "rajarshi"],
-      fullNames: [
+      actors: [
         {
-          first: "vaibhav",
-          last: "sachdeva",
+          name: "vaibhav sachdeva",
+          movies: ["oldscool", "jaiho"],
         },
         {
-          first: "rajarshi",
-          last: "chakraborty",
+          name: "rajarshi chakraborty",
+          movies: ["hanuman", "panchayat"],
         },
         {
-          first: "premkumar",
-          last: "srivasana",
+          name: "premkumar srivasana",
+          movies: ["malamaal weekly", "taxiwala"],
         },
       ],
+      myInfo: {
+        name: "vaibhav",
+        channel: "vaibhav_utuber",
+        course: "vue 3",
+      },
     };
   },
 };

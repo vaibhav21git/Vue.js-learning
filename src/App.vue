@@ -1,12 +1,7 @@
 <template>
   <div>
-    <div v-for="actor in actors" :key="actor.name">
-      <h2>{{ actor.name }}</h2>
-      <h3 v-for="movie in actor.movies" :key="movie">{{ movie }}</h3>
-    </div>
-    <h2 v-for="(value, key, index) in myInfo" :key="value">
-      {{ index }} {{ key }} {{ value }}
-    </h2>
+    <h2>Add method - {{ add(2, 3, 5) }}</h2>
+    <h2>Multiply method - {{ multiply(10) }}</h2>
   </div>
 </template>
 
@@ -15,27 +10,20 @@ export default {
   name: "App",
   data() {
     return {
-      names: ["vaibhav", "madhu", "rajarshi"],
-      actors: [
-        {
-          name: "vaibhav sachdeva",
-          movies: ["oldscool", "jaiho"],
-        },
-        {
-          name: "rajarshi chakraborty",
-          movies: ["hanuman", "panchayat"],
-        },
-        {
-          name: "premkumar srivasana",
-          movies: ["malamaal weekly", "taxiwala"],
-        },
-      ],
-      myInfo: {
-        name: "vaibhav",
-        channel: "vaibhav_utuber",
-        course: "vue 3",
-      },
+      baseMultiplier: 5,
     };
+  },
+
+  methods: {
+    add(a, b, c) {
+      return a + b + c;
+    },
+
+    // to access the data() in method  you have to use this which represent an object
+
+    multiply(num) {
+      return num * this.baseMultiplier;
+    },
   },
 };
 </script>

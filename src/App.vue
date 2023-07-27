@@ -1,21 +1,14 @@
 <template>
   <div>
-    <h2 v-if="num === 0">The number is zero</h2>
-    <h2 v-else-if="num < 0">The number is negative</h2>
-    <h2 v-else-if="num > 0">The number is positive</h2>
-    <h2 v-else>Not a number</h2>
-
-    <template v-if="display === true">
-      <h2>vaibhav</h2>
-      <h2>vaibhav_utuber</h2>
-      <h2>Vue</h2>
-    </template>
-
-    <h2 v-show="showElement">using v-show</h2>
-    // if the condtion is false then the v-show will be toggled // to display :
-    none and always presnt in DOM // but in case of v-if // it will not be
-    present in the dom if the condition is false
-    <h2 v-if="showElement">using v-if</h2>
+    <h2 v-for="(name, index) in names" v-bind:key="name">
+      {{ index }} {{ name }}
+    </h2>
+    <h2 v-for="(names, index) in fullNames" :key="index">
+      {{ index }} {{ names.first }} {{ names.last }}
+    </h2>
+    <h2 v-for="names in fullNames" :key="names">
+      {{ names.first }} {{ names.last }}
+    </h2>
   </div>
 </template>
 
@@ -24,9 +17,21 @@ export default {
   name: "App",
   data() {
     return {
-      num: "hi",
-      display: true,
-      showElement: true,
+      names: ["vaibhav", "madhu", "rajarshi"],
+      fullNames: [
+        {
+          first: "vaibhav",
+          last: "sachdeva",
+        },
+        {
+          first: "rajarshi",
+          last: "chakraborty",
+        },
+        {
+          first: "premkumar",
+          last: "srivasana",
+        },
+      ],
     };
   },
 };

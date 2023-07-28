@@ -1,7 +1,14 @@
 <template>
   <div>
-    <h2>Add method - {{ add(2, 3, 5) }}</h2>
-    <h2>Multiply method - {{ multiply(10) }}</h2>
+    <div>
+      <h2>{{ name }}</h2>
+    </div>
+    <div>
+      <button v-on:mouseover="name = 'Batman'">Change name</button>
+    </div>
+    <h2>{{ count }}</h2>
+    <button v-on:click="increment(5)">Increment</button>
+    <button v-on:click="decrement(2)">Decrement</button>
   </div>
 </template>
 
@@ -10,19 +17,20 @@ export default {
   name: "App",
   data() {
     return {
-      baseMultiplier: 5,
+      name: "vaibhav",
+      count: 0,
     };
   },
 
   methods: {
-    add(a, b, c) {
-      return a + b + c;
+    increment(num) {
+      return (this.count += num);
     },
 
     // to access the data() in method  you have to use this which represent an object
 
-    multiply(num) {
-      return num * this.baseMultiplier;
+    decrement(num) {
+      return (this.count -= num);
     },
   },
 };

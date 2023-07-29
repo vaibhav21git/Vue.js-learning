@@ -6,7 +6,7 @@
   </pre
       >
     </div>
-    <form>
+    <form @submit="submitForm">
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" v-model="formValues.name" />
@@ -34,6 +34,43 @@
           <option value="China">China</option>
         </select>
       </div>
+
+      <div>
+        <input
+          type="checkbox"
+          id="remoteWork"
+          v-model="formValues.remoteWork"
+          true-value="yes"
+          false-value="no"
+        />
+        <label for="remoteWork">Open to remote work?</label>
+      </div>
+
+      <div>
+        <label>skill set</label>
+        <input
+          type="checkbox"
+          id="html"
+          value="html"
+          v-model="formValues.skillset"
+        />
+        <label for="html">HTML</label>
+        <input
+          type="checkbox"
+          id="css"
+          value="css"
+          v-model="formValues.skillset"
+        />
+        <label for="css">css</label>
+        <input
+          type="checkbox"
+          id="js"
+          value="js"
+          v-model="formValues.skillset"
+        />
+        <label for="js">js</label>
+      </div>
+      <div><button>Submit</button></div>
     </form>
   </div>
 </template>
@@ -48,11 +85,18 @@ export default {
         profileSummary: "",
         country: "",
         jobLocation: [],
+        remoteWork: "no",
+        skillset: [],
       },
     };
   },
 
-  methods: {},
+  methods: {
+    submitForm(event) {
+      event.preventDefault();
+      console.log("Form values", this.formValues);
+    },
+  },
 };
 </script>
 

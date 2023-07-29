@@ -1,16 +1,40 @@
 <template>
   <div>
     <div>
-      <h2>{{ name }}</h2>
+      <pre>
+     {{ JSON.stringify(formValues, null, 2) }}
+  </pre
+      >
     </div>
-    <div>
-      <button v-on:click="changeName($event), increment(1, $event)">
-        Change name
-      </button>
-    </div>
-    <h2>{{ count }}</h2>
-    <button @click="increment(5, $event)">Increment</button>
-    <button v-on:click="decrement(2)">Decrement</button>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" v-model="formValues.name" />
+      </div>
+      <div>
+        <label for="profile">Profile Summary</label>
+        <textarea id="profile" v-model="formValues.profileSummary" />
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <select id="country" v-model="formValues.country">
+          <option value="">select a country</option>
+          <option value="India">India</option>
+          <option value="Russia">Russia</option>
+          <option value="China">China</option>
+        </select>
+      </div>
+
+      //control click is required
+      <div>
+        <label for="jobLocation">jobLocation</label>
+        <select id="jobLocation" multiple v-model="formValues.jobLocation">
+          <option value="India">India</option>
+          <option value="Russia">Russia</option>
+          <option value="China">China</option>
+        </select>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -19,28 +43,16 @@ export default {
   name: "App",
   data() {
     return {
-      name: "vaibhav",
-      count: 0,
+      formValues: {
+        name: "",
+        profileSummary: "",
+        country: "",
+        jobLocation: [],
+      },
     };
   },
 
-  methods: {
-    increment(num, event) {
-      console.log(event);
-      return (this.count += num);
-    },
-
-    changeName(event) {
-      this.name = "manu";
-      console.log("Event", event);
-    },
-
-    // to access the data() in method  you have to use this which represent an object
-
-    decrement(num) {
-      return (this.count -= num);
-    },
-  },
+  methods: {},
 };
 </script>
 

@@ -4,10 +4,12 @@
       <h2>{{ name }}</h2>
     </div>
     <div>
-      <button v-on:mouseover="name = 'Batman'">Change name</button>
+      <button v-on:click="changeName($event), increment(1, $event)">
+        Change name
+      </button>
     </div>
     <h2>{{ count }}</h2>
-    <button v-on:click="increment(5)">Increment</button>
+    <button @click="increment(5, $event)">Increment</button>
     <button v-on:click="decrement(2)">Decrement</button>
   </div>
 </template>
@@ -23,8 +25,14 @@ export default {
   },
 
   methods: {
-    increment(num) {
+    increment(num, event) {
+      console.log(event);
       return (this.count += num);
+    },
+
+    changeName(event) {
+      this.name = "manu";
+      console.log("Event", event);
     },
 
     // to access the data() in method  you have to use this which represent an object

@@ -2,6 +2,7 @@
   <div>
     <h2>fullname - {{ firstName }} {{ lastName }}</h2>
     <h2>Computed fullname -{{ fullName }}</h2>
+    <button @click="changeFullName">Change fullname</button>
     <button @click="items.push({ id: 4, title: 'Keyboard', price: 50 })">
       Add item
     </button>
@@ -55,6 +56,10 @@ export default {
         0
       );
     },
+
+    changeFullName() {
+      this.fullName = "manu sachdeva";
+    },
   },
 
   // like methods you added the computed property
@@ -65,8 +70,15 @@ export default {
   //1)properties need to be rendered to multiple places
   // computed properties are automatically calculated if their dependency changes
   computed: {
-    fullName() {
-      return `${this.firstName} ${this.lastName}`;
+    fullName: {
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set(value) {
+        const names = value.split(" ");
+        this.firstName = names[0];
+        this.lastName = names[1];
+      },
     },
     total() {
       return this.items.reduce(

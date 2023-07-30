@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h2 v-once>{{ name }}</h2>
-    <button @click="name = 'manu'">Change name</button>
-    <h2 v-pre>{{ name }}</h2>
-
-    // used when you do not want to Compile html elements
+    <h2>fullname - {{ firstName }} {{ lastName }}</h2>
+    <h2>Computed fullname -{{ fullName }}</h2>
+    <button @click="items.push({ id: 4, title: 'Keyboard', price: 50 })">
+      Add item
+    </button>
+    <h2>Computed Total - {{ total }}</h2>
   </div>
 </template>
 
@@ -13,11 +14,48 @@ export default {
   name: "App",
   data() {
     return {
-      name: "vaibhav",
+      firstName: "vaibhav",
+      lastName: "sachdeva",
+      items: [
+        {
+          id: 1,
+          title: "TV",
+          price: 100,
+        },
+        {
+          id: 2,
+          title: "Phone",
+          price: 200,
+        },
+        {
+          id: 3,
+          title: "Laptop",
+          price: 300,
+        },
+      ],
     };
   },
 
   methods: {},
+
+  // like methods you added the computed property
+  //computed is basically an object
+  // computed object contains a key which is a computed property
+  //what we have done is composed a new data property from a existing data property
+  // why should we use computed properties over data properties
+  //1)properties need to be rendered to multiple places
+  // computed properties are automatically calculated if their dependency changes
+  computed: {
+    fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    total() {
+      return this.items.reduce(
+        (total, curr) => (total = total + curr.price),
+        0
+      );
+    },
+  },
 };
 </script>
 

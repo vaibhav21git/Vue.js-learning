@@ -6,6 +6,8 @@
       Add item
     </button>
     <h2>Computed Total - {{ total }}</h2>
+    <h2>Method Total - {{ getTotal }}</h2>
+    <input type="text" v-model="country" />
   </div>
 </template>
 
@@ -36,7 +38,16 @@ export default {
     };
   },
 
-  methods: {},
+  //in  methods , properties  will always be recalculated on typing also , as the page
+  // is re-rendered
+  methods: {
+    getTotal() {
+      return this.items.reduce(
+        (total, curr) => (total = total + curr.price),
+        0
+      );
+    },
+  },
 
   // like methods you added the computed property
   //computed is basically an object

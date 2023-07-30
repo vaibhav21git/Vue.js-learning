@@ -6,10 +6,11 @@
   </pre
       >
     </div>
-    <form @submit="submitForm">
+    <form @submit.prevent="submitForm">
       <div>
+        // use of lazy modifier and trim
         <label for="name">Name</label>
-        <input type="text" id="name" v-model="formValues.name" />
+        <input type="text" id="name" v-model.trim.lazy="formValues.name" />
       </div>
       <div>
         <label for="profile">Profile Summary</label>
@@ -70,7 +71,17 @@
         />
         <label for="js">js</label>
       </div>
-      <div><button>Submit</button></div>
+
+      <div>
+        <label for="age">Age</label>
+        <input
+          @keyup.enter="submitForm"
+          type="number"
+          id="age"
+          v-model.number="formValues.age"
+        />
+      </div>
+      <!-- <div><button>Submit</button></div> -->
     </form>
   </div>
 </template>
@@ -87,13 +98,13 @@ export default {
         jobLocation: [],
         remoteWork: "no",
         skillset: [],
+        age: null,
       },
     };
   },
 
   methods: {
-    submitForm(event) {
-      event.preventDefault();
+    submitForm() {
       console.log("Form values", this.formValues);
     },
   },

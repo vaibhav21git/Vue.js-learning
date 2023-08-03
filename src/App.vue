@@ -3,16 +3,19 @@
     <GreetM name="Bruce" />
     <GreetM name="Clark" />
     <GreetM name="Diana" />
+    <ArticleV title="Article Title" :likes="50" :isPublished="true" />
   </div>
 </template>
 
 <script>
 import GreetM from "./components/GreetM.vue";
+import ArticleV from "./components/ArticleV.vue";
 
 export default {
   name: "App",
   components: {
     GreetM,
+    ArticleV,
   },
 };
 </script>

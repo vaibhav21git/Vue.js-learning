@@ -3,7 +3,12 @@
     <GreetM name="Bruce" />
     <GreetM name="Clark" />
     <GreetM name="Diana" />
-    <ArticleV title="Article Title" :likes="50" :isPublished="true" />
+    <ArticleV
+      id="my-article"
+      title="Article Title"
+      :likes="50"
+      :isPublished="true"
+    />
   </div>
 </template>
 

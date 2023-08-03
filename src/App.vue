@@ -1,5 +1,9 @@
 <template>
-  <GreetM />
+  <div>
+    <GreetM name="Bruce" />
+    <GreetM name="Clark" />
+    <GreetM name="Diana" />
+  </div>
 </template>
 
 <script>

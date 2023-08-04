@@ -1,23 +1,31 @@
 <template>
   <div>
-    <ComponentC />
-    <h3>Appcomponent username {{ name }}</h3>
+    <button @click="showPopup = true">Show Popup</button>
+    <PopUp v-show="showPopup" @close="closepopup" />
   </div>
 </template>
 
 <script>
-import ComponentC from "./components/ComponentC.vue";
+import PopUp from "./components/PopUp.vue";
 
 export default {
   name: "App",
   components: {
-    ComponentC,
+    PopUp,
   },
 
   data() {
     return {
       name: "vaibhav",
+      showPopup: false,
     };
+  },
+
+  methods: {
+    closepopup(name) {
+      this.showPopup = false;
+      console.log("name", name);
+    },
   },
 
   provide: {

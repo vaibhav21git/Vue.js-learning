@@ -1,26 +1,27 @@
 <template>
   <div>
-    <GreetM name="Bruce" />
-    <GreetM name="Clark" />
-    <GreetM name="Diana" />
-    <ArticleV
-      id="my-article"
-      title="Article Title"
-      :likes="50"
-      :isPublished="true"
-    />
+    <ComponentC />
+    <h3>Appcomponent username {{ name }}</h3>
   </div>
 </template>
 
 <script>
-import GreetM from "./components/GreetM.vue";
-import ArticleV from "./components/ArticleV.vue";
+import ComponentC from "./components/ComponentC.vue";
 
 export default {
   name: "App",
   components: {
-    GreetM,
-    ArticleV,
+    ComponentC,
+  },
+
+  data() {
+    return {
+      name: "vaibhav",
+    };
+  },
+
+  provide: {
+    username: "vaibhav",
   },
 };
 </script>

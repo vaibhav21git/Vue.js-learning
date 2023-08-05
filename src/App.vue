@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<!-- for github purpose edited -->
+<!-- for github purpose edited   done-->
 <script>
 // import CardV from "./components/CardV.vue";
 import NameList from "./components/NameList.vue";

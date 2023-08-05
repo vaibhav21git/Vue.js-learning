@@ -6,6 +6,7 @@
   </div>
 </template>
 
+<!-- // slot props -->
 <script>
 export default {
   name: "NameList",

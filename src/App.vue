@@ -1,23 +1,24 @@
 <template>
-  <InputF v-model="name" />
+  <div>
+    <CardV>Card Content</CardV>
+    <CardV><h2>Card content</h2></CardV>
+    <CardV>
+      <img src="https://picsum.photos/200" />
+    </CardV>
+    <CardV></CardV>
+  </div>
 </template>
 
 <script>
-// import PopUp from "./components/PopUp.vue";
-import InputF from "./components/InputF.vue";
+import CardV from "./components/CardV.vue";
 
 export default {
   name: "App",
 
-  components: {
-    // PopUp,
-    InputF,
-  },
+  components: { CardV },
 
   data() {
-    return {
-      name: "",
-    };
+    return {};
   },
 
   methods: {},

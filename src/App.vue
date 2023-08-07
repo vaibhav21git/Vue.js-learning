@@ -1,20 +1,35 @@
 <template>
   <div>
-    <h4>App component text</h4>
-    <ChildStyles>ChildStyles component text</ChildStyles>
+    <button @click="activeTab = 'TabA'">Tab A</button>
+    <button @click="activeTab = 'TabB'">Tab B</button>
+    <button @click="activeTab = 'TabC'">Tab C</button>
+
+    <!-- <TabA v-if="activeTab === 'TabA'" />
+    <TabB v-if="activeTab === 'TabB'" />
+    <TabC v-if="activeTab === 'TabC'" /> -->
+
+    <!-- v-bind is same as : -->
+
+    <!-- which component to render is decided by :is in component -->
+
+    <component :is="activeTab" />
   </div>
 </template>
 
 <script>
-import ChildStyles from "./components/ChildStyles.vue";
+import TabA from "./components/TabA.vue";
+import TabB from "./components/TabB.vue";
+import TabC from "./components/TabC.vue";
 
 export default {
   name: "App",
 
-  components: { ChildStyles },
+  components: { TabA, TabB, TabC },
 
   data() {
-    return {};
+    return {
+      activeTab: "TabA",
+    };
   },
 
   methods: {},
@@ -35,13 +50,3 @@ h4 {
   color: orange;
 }
 </style>
-
-<!-- 
-here the orange color is restricted to its own not passed to the child 
-if we try to use the scoped -->
-
-<!-- scoped attribute ensures a component CSS will apply only to its own HTML elements -->
-
-<!-- when using slots , the parent styles is applied and not the child 
-component style even though the content is embedded inside the child
-component -->

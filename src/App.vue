@@ -1,48 +1,27 @@
 <template>
   <div>
-    <NameList>
-      <template v-slot:default="slotProps">
-        {{ slotProps.firstName }} {{ slotProps.lastName }}
-      </template>
-    </NameList>
-
-    <NameList>
-      <template v-slot:default="slotProps">
-        {{ slotProps.lastName }} {{ slotProps.firstName }}
-      </template>
-    </NameList>
-
-    <NameList>
-      <template v-slot:default="slotProps">
-        {{ slotProps.firstName }}
-      </template>
-    </NameList>
+    <h4>App component text</h4>
+    <ChildStyles>ChildStyles component text</ChildStyles>
   </div>
 </template>
 
-<!-- for github purpose edited   done-->
 <script>
-// import CardV from "./components/CardV.vue";
-import NameList from "./components/NameList.vue";
+import ChildStyles from "./components/ChildStyles.vue";
 
 export default {
   name: "App",
 
-  components: { NameList },
+  components: { ChildStyles },
 
   data() {
     return {};
   },
 
   methods: {},
-
-  provide: {
-    username: "vaibhav",
-  },
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,19 +31,17 @@ export default {
   margin-top: 60px;
 }
 
-.underline {
-  text-decoration: underline;
-}
-
-.promoted {
-  font-style: italic;
-}
-
-.new {
-  color: olivedrab;
-}
-
-.sold-out {
-  color: red;
+h4 {
+  color: orange;
 }
 </style>
+
+<!-- 
+here the orange color is restricted to its own not passed to the child 
+if we try to use the scoped -->
+
+<!-- scoped attribute ensures a component CSS will apply only to its own HTML elements -->
+
+<!-- when using slots , the parent styles is applied and not the child 
+component style even though the content is embedded inside the child
+component -->

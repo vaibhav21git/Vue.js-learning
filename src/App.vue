@@ -12,9 +12,18 @@
 
     <!-- which component to render is decided by :is in component -->
 
-    <component :is="activeTab" />
+    <keep-alive>
+      <component :is="activeTab" />
+    </keep-alive>
   </div>
 </template>
+
+<!-- 
+if the user is filling the form in differernt tab then the data should be 
+preserved in each tab for the better user experience -->
+<!-- for this we use key alive element -->
+<!-- here vue is keeping dynamic component alive even when the component is not
+active -->
 
 <script>
 import TabA from "./components/TabA.vue";

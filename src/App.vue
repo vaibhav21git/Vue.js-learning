@@ -1,44 +1,23 @@
 <template>
-  <div>
-    <button @click="activeTab = 'TabA'">Tab A</button>
-    <button @click="activeTab = 'TabB'">Tab B</button>
-    <button @click="activeTab = 'TabC'">Tab C</button>
-
-    <!-- <TabA v-if="activeTab === 'TabA'" />
-    <TabB v-if="activeTab === 'TabB'" />
-    <TabC v-if="activeTab === 'TabC'" /> -->
-
-    <!-- v-bind is same as : -->
-
-    <!-- which component to render is decided by :is in component -->
-
-    <keep-alive>
-      <component :is="activeTab" />
-    </keep-alive>
-  </div>
+  <teleport to="#portal-root">
+    <PortalV />
+  </teleport>
 </template>
 
-<!-- 
-if the user is filling the form in differernt tab then the data should be 
-preserved in each tab for the better user experience -->
-<!-- for this we use key alive element -->
-<!-- here vue is keeping dynamic component alive even when the component is not
-active -->
-
 <script>
-import TabA from "./components/TabA.vue";
-import TabB from "./components/TabB.vue";
-import TabC from "./components/TabC.vue";
+import PortalV from "./components/PortalV.vue";
+// teleporting allows to move elements from one place to another
+// It is used to create component in a place and render it in the
+// different place that is not under the root element which
+// is under app
 
 export default {
   name: "App",
 
-  components: { TabA, TabB, TabC },
+  components: { PortalV },
 
   data() {
-    return {
-      activeTab: "TabA",
-    };
+    return {};
   },
 
   methods: {},
